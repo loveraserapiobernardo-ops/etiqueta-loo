@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etiqueta-Loo Kids: Presentación del Proyecto</title>
+    <!-- Carga de Tailwind CSS para un diseño moderno y responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Paleta de colores basada en el logo 'Etiqueta-Loo Kids' (Amarillo, Azul, Morado) */
+        :root {
+            --color-primary: #FFD900; /* Amarillo brillante del logo */
+            --color-secondary: #00A6FB; /* Azul vibrante para encabezados */
+            --color-accent: #7F00FF; /* Morado/Púrpura para títulos de sección */
+            --color-background: #FFFBEB; /* Fondo muy claro (casi blanco con tinte amarillo) */
+            --color-text: #262626; /* Gris oscuro para texto */
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+
+        .header-bg {
+            background-color: var(--color-secondary);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            color: var(--color-accent); /* Títulos en morado */
+            border-left: 6px solid var(--color-primary); /* Línea amarilla destacada */
+        }
+
+        .card-bg {
+            background-color: #ffffff;
+            border-radius: 1rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Estilo para los botones principales (Amarillo) */
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-text);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #FFC000;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-accent);
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #6A00D1;
+        }
+
+        /* Estilos para el acordeón (Sobre Nosotros) */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-item[open] .accordion-content {
+            max-height: 500px; /* Suficientemente grande para el contenido */
+            transition: max-height 0.5s ease-in;
+        }
+        
+        /* Estilos para el Modal de Precios */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000; /* Asegura que esté sobre todo */
+            display: none; /* Oculto por defecto */
+        }
+        
+        /* Estilos para el banner de Cookies */
+        #cookie-banner {
+            z-index: 999; /* Justo debajo del modal, pero sobre el contenido */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado y Barra de Navegación (Azul) -->
+    <header class="header-bg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <a href="#inicio" class="text-3xl font-extrabold text-white mb-2 sm:mb-0">ETIQUETA-LOO Kids</a>
+            
+            <!-- Links de Navegación (Actualizados) -->
+            <nav class="flex space-x-4">
+                <a href="#idea-en-claro" class="text-white hover:text-yellow-300 font-semibold transition">Inicio</a>
+                <a href="#sobre-nosotros" class="text-white hover:text-yellow-300 font-semibold transition">Sobre Nosotros</a>
+                <a href="#galeria" class="text-white hover:text-yellow-300 font-semibold transition">Galería</a>
+                <!-- El enlace de contacto ahora es un botón, pero apunta a la sección -->
+                <a href="#contacto" class="btn-primary px-3 py-1 rounded-md text-sm font-bold shadow-md">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Principal (Inicio) -->
+    <main id="inicio" class="py-16 md:py-24 text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 text-gray-900">
+                La Solución para No Perder <span class="text-blue-600">Nada Más.</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-600 max-w-4xl mx-auto">
+                Etiquetas personalizadas y seguras que aseguran la recuperación rápida de pertenencias con tecnología simple y amigable para padres.
+            </p>
+            <a onclick="openPriceModal()" class="btn-secondary px-6 py-3 rounded-xl font-bold text-lg shadow-lg cursor-pointer">
+                Ver Productos Personalizados
+            </a>
+            
+            <div class="inline-block p-4 card-bg mt-12">
+                <p class="text-lg font-bold text-gray-700">Logotipo Etiqueta-Loo Kids</p>
+                <img scr="logo.jpeg"alt="logotipo">
+            </div>
+        </div>
+    </main>
+    
+    <!-- Sección: IDEA EN CLARO y Características del Producto -->
+    <section id="idea-en-claro" class="py-16 bg-yellow-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold mb-12 pl-4 section-title">
+                IDEA EN CLARO: Definición del Proyecto
+            </h2>
+            
+            <div class="card-bg p-8 mb-8 border-l-8 border-violet-500">
+                <h3 class="text-2xl font-bold mb-4 text-gray-900">
+                    Idea Central 
+                </h3>
+                <p class="text-xl text-gray-700 font-medium">
+                    <span class="font-extrabold text-violet-700">Vender etiquetas personalizadas con tecnología de identificación (QR/ID Único)</span> a <span class="font-extrabold text-violet-700">padres de familia con hijos en edad escolar</span> porque <span class="font-extrabold text-violet-700">reducen la pérdida de prendas y facilitan la recuperación a través de una plataforma web segura.</span>
+                </p>
+                <p class="mt-4 text-lg font-semibold text-gray-600">
+                    <span class="text-blue-600">Categoría:</span> Innovación (Tecnología aplicada a una necesidad cotidiana).
+                </p>
+            </div>
+
+            <div class="card-bg p-8">
+                <h3 class="text-2xl font-bold mb-6 text-gray-900 border-b-2 border-gray-100 pb-2">
+                    Características Clave del Producto/Servicio 
+                </h3>
+                <div class="grid md:grid-cols-3 gap-6 text-left">
+                    
+                    <!-- Característica 1: Qué es -->
+                    <div class="space-y-2 p-4 border-l-4 border-yellow-500 bg-yellow-50 rounded-lg">
+                        <h4 class="text-xl font-semibold text-gray-800">Qué es (Producto Físico + Servicio IT)</h4>
+                        <p class="text-sm text-gray-600">
+                            Etiquetas de vinil termoadhesivo o tela resistente a lavadas, integradas con un sistema de <span class="font-bold">identificación digital (QR/ID)</span> y una plataforma online para avisos de recuperación. <span class="font-bold text-red-500"></span>
+                        </p>
+                    </div>
+
+                    <!-- Característica 2: Material / Seguridad -->
+                    <div class="space-y-2 p-4 border-l-4 border-blue-500 bg-blue-50 rounded-lg">
+                        <h4 class="text-xl font-semibold text-gray-800">Material y Uso Seguro</h4>
+                        <p class="text-sm text-gray-600">
+                            <span class="font-bold">Material:</span> Vinil ecológico y tintas no tóxicas, fácil de aplicar (planchado o pegado). <span class="font-bold">Seguridad:</span> Resistentes al agua, no causan irritación y la plataforma de recuperación protege los datos personales. <span class="font-bold text-red-500"></span>
+                        </p>
+                    </div>
+
+                    <!-- Característica 3: Modo de Uso (Recuperación) -->
+                    <div class="space-y-2 p-4 border-l-4 border-violet-500 bg-violet-50 rounded-lg">
+                        <h4 class="text-xl font-semibold text-gray-800">Tecnología de Recuperación</h4>
+                        <p class="text-sm text-gray-600">
+                            El escaneo del QR/ID único activa una <span class="font-bold">API segura</span> que notifica al propietario sin revelar información, facilitando la devolución de la prenda perdida de manera eficiente. <span class="font-bold text-red-500"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Sobre Nosotros (Misión, Visión, Filosofía) -->
+    <section id="sobre-nosotros" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold mb-12 pl-4 section-title">
+                Sobre Nosotros: El Corazón de Etiqueta-Loo Kids
+            </h2>
+
+            <!-- Acordeón para Misión, Visión, Filosofía -->
+            <div class="space-y-4 max-w-4xl mx-auto">
+                
+                <!-- Misión -->
+                <details class="card-bg p-5 cursor-pointer accordion-item" open>
+                    <summary class="flex justify-between items-center text-2xl font-bold text-violet-700">
+                        Nuestra Misión
+                        <span class="text-yellow-500 text-3xl font-extrabold">+</span>
+                    </summary>
+                    <div class="accordion-content pt-4 text-gray-700">
+                        <p>
+                             brindar soluciones prácticas y duraderas para la identificación de prendas infantiles mediante etiquetas adheribles personalizadas, asegurando que cada prenda este marcada con estilo, seguridad y calidad facilitando la vida de padres y cuidadores.
+                        </p>
+                    </div>
+                </details>
+
+                <!-- Visión -->
+                <details class="card-bg p-5 cursor-pointer accordion-item">
+                    <summary class="flex justify-between items-center text-2xl font-bold text-violet-700">
+                        Nuestra Visión
+                        <span class="text-yellow-500 text-3xl font-extrabold">+</span>
+                    </summary>
+                    <div class="accordion-content pt-4 text-gray-700">
+                        <p>
+                            LLegar a ser la empresa lider de etiquetas personalizadas para ropa infantil en el mercado nacional,reconocida por su innovación,diseño atractivo y compromiso con la comodidad y el bienestar de los niños logrando expandir nuestras soluciones a nivel internacional.
+                        </p>
+                    </div>
+                </details>
+
+                <!-- Filosofía Empresarial -->
+                <details class="card-bg p-5 cursor-pointer accordion-item">
+                    <summary class="flex justify-between items-center text-2xl font-bold text-violet-700">
+                        Filosofía Empresarial
+                        <span class="text-yellow-500 text-3xl font-extrabold">+</span>
+                    </summary>
+                    <div class="accordion-content pt-4 text-gray-700">
+                        <p>
+                             Nos basamos en la Integridad, ofreciendo productos honestos y seguros; la Innovación, buscando siempre la mejor tecnología para nuestros clientes; y el Compromiso Social, promoviendo un consumo responsable y el cuidado de los bienes personales.
+                        </p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Galería (Productos) -->
+    <section id="galeria" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold mb-12 pl-4 section-title">
+                Galería de Productos: Diseña la Tuya
+            </h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Producto 1: Etiquetas de Ropa (Termoadhesivas) -->
+                <div class="card-bg p-6 text-center border-t-4 border-blue-500">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Etiquetas Termoadhesivas</h3>
+                    <div class="bg-gray-100 h-40 flex items-center justify-center rounded-lg mb-4">
+                        <span class="text-gray-500 text-sm"> Etiqueta de Ropa</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">Perfectas para uniformes y prendas que pasan por muchas lavadas. Resistentes al agua caliente y secadora. ¡Personaliza con nombre y tu código QR!</p>
+                    <!-- Botón para abrir el modal de precios -->
+                    <button onclick="openPriceModal('Termoadhesivas')" class="btn-secondary px-4 py-2 rounded-lg text-sm font-semibold">Ver Precios</button>
+                </div>
+
+                <!-- Producto 2: Etiquetas de Objeto (Vinil) -->
+                <div class="card-bg p-6 text-center border-t-4 border-yellow-500">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Etiquetas de Vinil para Objetos</h3>
+                    <div class="bg-gray-100 h-40 flex items-center justify-center rounded-lg mb-4">
+                        <span class="text-gray-500 text-sm"> Etiqueta de ropa</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">Ideales para loncheras, termos, cuadernos y mochilas. Adherencia fuerte sobre plástico, metal y madera. ¡Colores vibrantes y diseños divertidos!</p>
+                    <!-- Botón para abrir el modal de precios -->
+                    <button onclick="openPriceModal('Vinil')" class="btn-secondary px-4 py-2 rounded-lg text-sm font-semibold">Personalizar y Ver Precios</button>
+                </div>
+
+                <!-- Producto 3: Paquetes Escolares -->
+                <div class="card-bg p-6 text-center border-t-4 border-violet-500">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Paquetes Escolares (Mixtos)</h3>
+                    <div class="bg-gray-100 h-40 flex items-center justify-center rounded-lg mb-4">
+                        <span class="text-gray-500 text-sm"> Etiquetas</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">La solución completa: Incluye etiquetas para ropa, objetos pequeños y grandes, todas con el mismo sistema de recuperación. ¡Ahorra al comprar el paquete!</p>
+                    <!-- Botón para abrir el modal de precios -->
+                    <button onclick="openPriceModal('Paquetes')" class="btn-secondary px-4 py-2 rounded-lg text-sm font-semibold">Comprar y Ver Precios</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Contacto y Ubicación -->
+    <section id="contacto" class="py-16 md:py-24 bg-yellow-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold mb-12 pl-4 section-title">
+                Contacto y Ubicación de la Empresa
+            </h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                
+                <!-- Columna de Formulario de Contacto -->
+                <div class="card-bg p-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">¿Tienes Preguntas? Escríbenos.</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="nombre" class="block text-sm font-medium text-gray-700 text-left">Nombre Completo <span class="text-red-500">[EDITAR CAMPO]</span></label>
+                            <input type="text" id="nombre" name="nombre" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 text-left">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+                        </div>
+                        <div>
+                            <label for="mensaje" class="block text-sm font-medium text-gray-700 text-left">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full py-3 font-bold text-lg rounded-xl">Enviar Mensaje</button>
+                    </form>
+                </div>
+
+                <!-- Columna de Ubicación y Datos -->
+                <div class="card-bg p-8" id="ubicacion">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Nuestra Ubicación Central</h3>
+                    
+                    <div class="space-y-4 text-left">
+                        <p class="text-lg font-semibold text-violet-700">Dirección Principal</p>
+                        <p class="text-gray-700">
+                            CBT. Lic Mario Colín Sánchez , Atlacomulco, México.
+                            <br> (Punto de Recolección y Oficina Administrativa).
+                        </p>
+                        
+                        <p class="text-lg font-semibold text-violet-700">Teléfono y Horarios</p>
+                        <p class="text-gray-700">
+                            *Teléfono:* +52 722 679 84 11<br>
+                            *Email:* contacto@etiquetaloop.com <br>
+                            *Horario:* Lunes a domingo.
+                        </p>
+
+                        <p class="text-lg font-semibold text-violet-700 mt-6">Mini Mapa</p>
+                        <div class="bg-gray-200 h-64 w-full rounded-lg flex items-center justify-center">
+                            <span class="text-gray-500">CBT ATLACOMULCO</span>
+                             <hr>
+                               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3753.7435741521253!2d-99.87651745030107!3d19.80846670465238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d258f477a69da5%3A0x86225806dc0f38ee!2sCBT%20Lic.%20Mario%20Col%C3%ADn%20S%C3%A1nchez%2C%20Atlacomulco!5e0!3m2!1ses!2smx!4v1763935177716!5m2!1ses!2smx" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página (Azul) -->
+    <footer class="bg-blue-900 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            <p>&copy; 2025 Etiqueta-Loo Kids. Todos los derechos reservados. <span class="text-yellow-300">¡Nunca más pierdas nada!</span></p>
+        </div>
+    </footer>
+<!-- MODAL DE PRECIOS (Ventana Emergente) -->
+    <div id="price-modal" class="modal-overlay fixed inset-0 flex items-center justify-center p-4" onclick="closePriceModal(event)">
+        <div class="bg-white rounded-xl p-6 w-full max-w-xl max-h-[90vh] overflow-y-auto shadow-2xl transition-all duration-300" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h3 class="text-3xl font-extrabold text-violet-700">Precios y Paquetes</h3>
+                <button onclick="closePriceModal()" class="text-gray-400 hover:text-gray-700 text-4xl leading-none">&times;</button>
+            </div>
+            
+            <p class="text-lg mb-4 text-gray-600">
+                Aquí puedes ver los precios detallados para comenzar a personalizar. ¡Recuerda que la tecnología de recuperación está incluida!
+            </p>
+
+            <!-- Tabla de Precios (Editable) -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border-collapse rounded-lg overflow-hidden">
+                    <thead class="bg-blue-100">
+                        <tr>
+                            <th class="py-3 px-4 text-left text-sm font-semibold text-blue-800 uppercase">Producto/Paquete</th>
+                            <th class="py-3 px-4 text-left text-sm font-semibold text-blue-800 uppercase">Cantidad</th>
+                            <th class="py-3 px-4 text-right text-sm font-semibold text-blue-800 uppercase">Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Fila 1 -->
+                        <tr class="border-b hover:bg-yellow-50">
+                            <td class="py-3 px-4 font-medium text-gray-800">Etiquetas Termoadhesivas (Ropa)</td>
+                            <td class="py-3 px-4 text-gray-600">30 Unidades</td>
+                            <td class="py-3 px-4 text-right font-bold text-violet-700">$00.00</td>
+                        </tr>
+                        <!-- Fila 2 -->
+                        <tr class="border-b hover:bg-yellow-50">
+                            <td class="py-3 px-4 font-medium text-gray-800">Etiquetas de Vinil (Objetos)</td>
+                            <td class="py-3 px-4 text-gray-600">50 Unidades</td>
+                            <td class="py-3 px-4 text-right font-bold text-violet-700">$00.00</td>
+                        </tr>
+                        <!-- Fila 3 - Paquete destacado -->
+                        <tr class="border-b bg-yellow-200 font-bold">
+                            <td class="py-3 px-4 text-gray-900">Paquete Escolar Mixto (¡Ahorro!)</td>
+                            <td class="py-3 px-4 text-gray-900">60 Ropa + 40 Objetos</td>
+                            <td class="py-3 px-4 text-right text-2xl text-blue-600">$00-00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-6 text-center">
+                <button onclick="closePriceModal()" class="btn-primary py-2 px-6 rounded-lg font-bold">Cerrar y Ordenar</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- BANNER DE COOKIES Y PRIVACIDAD -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 transition-transform duration-500 transform translate-y-full flex flex-col md:flex-row items-center justify-between shadow-2xl">
+        <p class="text-sm text-center md:text-left mb-2 md:mb-0">
+            Utilizamos cookies para mejorar tu experiencia y ofrecerte la mejor solución de etiquetas. Al hacer clic en "Aceptar", aceptas nuestra <a href="#" class="font-bold text-yellow-400 hover:text-yellow-200 underline">[Política de Privacidad EDITABLE]</a>.
+        </p>
+        <div class="flex space-x-2">
+            <button onclick="handleCookieConsent('aceptar')" class="btn-primary py-2 px-4 rounded-md text-sm font-bold whitespace-nowrap">
+                Aceptar
+            </button>
+            <button onclick="handleCookieConsent('rechazar')" class="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-md text-sm font-bold whitespace-nowrap">
+                Rechazar
+            </button>
+        </div>
+    </div>
+
+
+    <script>
+        // Función para manejar el Modal de Precios
+        const priceModal = document.getElementById('price-modal');
+        
+        function openPriceModal(productType) {
+            // Muestra el modal
+            priceModal.style.display = 'flex';
+            
+            // Opcional: Si quieres personalizar el modal según el botón presionado:
+            // console.log(Abriendo modal para: ${productType});
+        }
+
+        function closePriceModal(event) {
+            // Si el evento existe y no es el elemento modal-overlay, no hacer nada
+            if (event && event.target !== priceModal) return;
+            
+            // Oculta el modal
+            priceModal.style.display = 'none';
+        }
+
+        // Para cerrar el modal con la tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closePriceModal();
+            }
+        });
+        
+        // Inicialización del Banner de Cookies
+        const cookieBanner = document.getElementById('cookie-banner');
+        
+        // Verifica si el usuario ya ha aceptado o rechazado las cookies
+        function checkCookieConsent() {
+            // Utilizamos localStorage para recordar la elección del usuario
+            const consent = localStorage.getItem('cookieConsent_EtiquetaLoo');
+            
+            if (consent !== 'accepted' && consent !== 'rejected') {
+                // Si no hay consentimiento, muestra el banner con una pequeña animación
+                setTimeout(() => {
+                    cookieBanner.style.transform = 'translateY(0)';
+                }, 500);
+            }
+        }
+        
+        // Maneja la acción del usuario en el banner
+        function handleCookieConsent(action) {
+            if (action === 'aceptar') {
+                localStorage.setItem('cookieConsent_EtiquetaLoo', 'accepted');
+            } else {
+                localStorage.setItem('cookieConsent_EtiquetaLoo', 'rejected');
+            }
+            // Oculta el banner
+            cookieBanner.style.transform = 'translateY(100%)';
+        }
+
+        // Llama a la función al cargar la página
+        window.onload = checkCookieConsent;
+    </script>
+
+</body>
+</html>
